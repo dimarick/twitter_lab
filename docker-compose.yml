@@ -1,0 +1,13 @@
+version: '3.7'
+networks:
+    twitter_dev:
+        name: twitter_dev
+        driver: bridge
+services:
+    postgres:
+        image: postgres
+        ports:
+            - "6432:5432"
+        env_file: .env
+        networks:
+            - twitter_dev
