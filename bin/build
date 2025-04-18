@@ -2,4 +2,7 @@
 source .env
 PATH=$PATH:$GRADLE_PATH/bin
 gradle build --project-dir ums --info --parallel && \
-gradle build --project-dir twitter --info --parallel
+gradle build --project-dir twitter --info --parallel && \
+
+docker build --tag 'twitter_lab/twitter:latest' --file dockerfile/twitter/Dockerfile . && \
+docker build --tag 'twitter_lab/ums:latest' --file dockerfile/ums/Dockerfile .

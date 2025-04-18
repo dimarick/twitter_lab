@@ -12,22 +12,14 @@ services:
         networks:
             - twitter_dev
     ums:
-        image: openjdk
-        env_file: .env
-        entrypoint: 'java -jar /home/ums/build/libs/ums-1.2.jar'
+        image: twitter_lab/ums:latest
         ports:
             -   9000:9000
-        volumes:
-            -   '$PWD:/home/'
         networks:
             - twitter_dev
     twitter:
-        image: openjdk
-        env_file: .env
-        entrypoint: 'java -jar /home/twitter/build/libs/twitter-1.2.jar'
+        image: twitter_lab/twitter:latest
         ports:
             -   9001:9001
-        volumes:
-            -   '$PWD:/home/'
         networks:
             - twitter_dev
