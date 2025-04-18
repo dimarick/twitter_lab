@@ -372,3 +372,5 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,gradle,groovy,java,venv,virtualenv,kotlin,go,intellij,intellij+iml,intellij+all
+
+.env

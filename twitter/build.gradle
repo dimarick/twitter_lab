@@ -25,7 +25,7 @@ repositories {
 }
 
 dependencies {
-	implementation 'mysql:mysql-connector-java:8.0.32'
+	implementation 'org.postgresql:postgresql'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	compileOnly 'org.projectlombok:lombok'

@@ -1,3 +1,7 @@
+CREATE DATABASE twitter;
+
+\c twitter
+
 DROP TABLE IF EXISTS producers;
 CREATE TABLE producers
 (

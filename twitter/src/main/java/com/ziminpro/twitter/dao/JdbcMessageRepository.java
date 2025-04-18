@@ -43,9 +43,9 @@ public class JdbcMessageRepository implements MessageRepository {
     @Override
     public List<Message> getMessagesForSubscriberById(UUID subscriberId) {
         List<Message> messages = jdbcTemplate.query(Constants.GET_MESSAGES_FOR_SUBSCRIBER,
-                (rs, rowNum) -> new Message(DaoHelper.bytesArrayToUuid(rs.getBytes("messages.id")),
-                        DaoHelper.bytesArrayToUuid(rs.getBytes("messages.producer_id")),
-                        rs.getString("messages.content"), rs.getLong("messages.created")),
+                (rs, rowNum) -> new Message(DaoHelper.bytesArrayToUuid(rs.getBytes("id")),
+                        DaoHelper.bytesArrayToUuid(rs.getBytes("producer_id")),
+                        rs.getString("content"), rs.getLong("created")),
                 subscriberId.toString());
         return Optional.ofNullable(messages).orElse(new ArrayList<>());
     }

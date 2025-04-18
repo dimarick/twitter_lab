@@ -4,14 +4,17 @@ server:
 
 ## MySQL
 spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
   datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/twitter?serverTimezone=UTC&useLegacyDatetimeCode=false
-    username: root
-    password: passw
+    driverClassName: org.postgresql.Driver
+    url: ${POSTGRES_CONNECTION}/twitter
+    username: postgres
+    password: ${POSTGRES_PASSWORD}
 
 ums:
-  host: http://localhost
+  host: ${UMS_APP}
   port: 9000
   paths:
     user: /users/user

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+source .env
+PATH=$PATH:$GRADLE_PATH/bin
+gradle build --project-dir ums --info --parallel && \
+gradle build --project-dir twitter --info --parallel

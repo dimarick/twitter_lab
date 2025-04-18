@@ -13,16 +13,6 @@ To build the project, follow the steps below.
   - Gradle 8.7
   - Docker
 
-2. Clone the repository from GitHub
-    ```shell
-    cd $HOME
-    git clone https://github.com/eugenezimin/bird.git
-    ```
-2. Go into the folder
-    ```shell
-    cd $HOME/bird
-    ```
-
 3. Set up the database by running the provided SQL script.
     ```shell
     docker run -e MYSQL_ROOT_PASSWORD=passw \
@@ -39,29 +29,7 @@ To build the project, follow the steps below.
     docker exec -it bird mysql -u root -ppassw -e "use twitter; source /database/twitter.sql"
     ```
 
-5. Build your Java applications using Gradle
-    - UMS service
-        ```shell
-        cd $HOME/bird/ums
-        gradle build
-        ```
-    - Messaging service
-        ```shell
-        cd $HOME/bird/twitter
-        gradle build
-        ```
-
 6. Start the application and check how it works
-    - UMS service
-        ```shell
-        cd $HOME/bird/ums/build/libs/
-        java -jar ums-1.2.jar
-        ```
-    - Messaging service
-        ```shell
-        cd $HOME/bird/ums/build/libs/
-        java -jar twitter-1.2.jar
-        ```
 
 ### Verify How It Works
 As a result you should have 2 separate services running on your local machine using ports `9000` and `9001` accordingly. Import Postman collections from the `requests` folder into your Postman/Hopscotch/Insomnia client to check how it works.

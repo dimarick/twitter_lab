@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+source .env
+
+docker-compose run --rm -e PGPASSWORD=$POSTGRES_PASSWORD postgres psql --host postgres --user postgres < schema/twitter.sql
+docker-compose run --rm -e PGPASSWORD=$POSTGRES_PASSWORD postgres psql --host postgres --user postgres < schema/ums.sql

@@ -1,3 +1,7 @@
+CREATE DATABASE ums;
+
+\c ums
+
 DROP TABLE IF EXISTS last_visit;
 
 CREATE TABLE last_visit
@@ -43,7 +47,7 @@ CREATE TABLE users_has_roles
     FOREIGN KEY (users_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-drop index fk_users_has_roles_roles1_idx;
+drop index if exists fk_users_has_roles_roles1_idx;
 create index fk_users_has_roles_roles1_idx on users_has_roles (roles_id);
 
 INSERT INTO last_visit (id, "in", out)
