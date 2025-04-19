@@ -58,7 +58,10 @@ bin/kube_deploy
 ```
 
 ### Verify How It Works
-As a result you should have 2 separate services running on your local machine using ports `9000` and `9001` accordingly. Import Postman collections from the `requests` folder into your Postman/Hopscotch/Insomnia client to check how it works.
+
+```
+curl -v http://`minikube ip`:32001/messages/subscriber/70a64b54-43c3-4c18-bbec-64590ff7e0cc
+```
 
 ## License 
 This repository is licensed under the [BSD 2-Clause License](LICENSE).
