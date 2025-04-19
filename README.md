@@ -17,43 +17,43 @@ To build the project, follow the steps below.
 на https://hub.docker.com и с помощью команды docker login авторизоваться локально.
 
 3. Выполните 
-    ```shell
+    ```
 cp .env.local .env
     ```
 
 4. Установите свои значения указанных переменных в .env
-    ```shell
+    ```
 GRADLE_PATH=
 DOCKER_HUB_LOGIN=
     ```
 
 5. Build java apps
-    ```shell
+    ```
 bin/build
     ```
 
 6. Start db
-    ```shell
+    ```
 docker-compose up
     ```
 
 7. Create database schema
-    ```shell
+    ```
 bin/schema
     ```
 8. Создайте кластер миникуба 
-    ```shell
+    ```
 bin/kube_setup
     ```
 9. Выполните minikube ip
 
 10. Пропишите в .env
-    ```shell
+    ```
 UMS_APP=http://<ip из прошлого шага>:32000
     ```
 
 11. Выполните для развертывания приложения с настроенным .env
-    ```shell
+    ```
 bin/kube_deploy
     ```
 
