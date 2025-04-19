@@ -17,45 +17,45 @@ To build the project, follow the steps below.
 на https://hub.docker.com и с помощью команды docker login авторизоваться локально.
 
 3. Выполните 
-    ```
+```
 cp .env.local .env
-    ```
+```
 
 4. Установите свои значения указанных переменных в .env
-    ```
+```
 GRADLE_PATH=
 DOCKER_HUB_LOGIN=
-    ```
+```
 
 5. Build java apps
-    ```
+```
 bin/build
-    ```
+```
 
 6. Start db
-    ```
+```
 docker-compose up
-    ```
+```
 
 7. Create database schema
-    ```
+```
 bin/schema
-    ```
+```
 8. Создайте кластер миникуба 
-    ```
+```
 bin/kube_setup
-    ```
+```
 9. Выполните minikube ip
 
 10. Пропишите в .env
-    ```
+```
 UMS_APP=http://<ip из прошлого шага>:32000
-    ```
+```
 
 11. Выполните для развертывания приложения с настроенным .env
-    ```
+```
 bin/kube_deploy
-    ```
+```
 
 ### Verify How It Works
 As a result you should have 2 separate services running on your local machine using ports `9000` and `9001` accordingly. Import Postman collections from the `requests` folder into your Postman/Hopscotch/Insomnia client to check how it works.
