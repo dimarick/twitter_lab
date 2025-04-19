@@ -12,23 +12,50 @@ To build the project, follow the steps below.
   - JDK 17 with `JAVA_HOME` pointing to the right version
   - Gradle 8.7
   - Docker
+  - установить minikube по инструкции https://kubernetes.io/ru/docs/tasks/tools/install-minikube/
+2. Для работы kubernetes потребуется загрузка на докер хаб. Для этого нужно зарегистрироваться
+на https://hub.docker.com и с помощью команды docker login авторизоваться локально.
 
-2. Build java apps
+3. Выполните 
+    ```shell
+cp .env.local .env
+    ```
+
+4. Установите свои значения указанных переменных в .env
+    ```shell
+GRADLE_PATH=
+DOCKER_HUB_LOGIN=
+    ```
+
+5. Build java apps
     ```shell
 bin/build
     ```
 
-3. Start apps
+6. Start db
     ```shell
 docker-compose up
     ```
 
-4. Create database schema
+7. Create database schema
     ```shell
 bin/schema
     ```
+8. Создайте кластер миникуба 
+    ```shell
+bin/kube_setup
+    ```
+9. Выполните minikube ip
 
-6. Start the application and check how it works
+10. Пропишите в .env
+    ```shell
+UMS_APP=http://<ip из прошлого шага>:32000
+    ```
+
+11. Выполните для развертывания приложения с настроенным .env
+    ```shell
+bin/kube_deploy
+    ```
 
 ### Verify How It Works
 As a result you should have 2 separate services running on your local machine using ports `9000` and `9001` accordingly. Import Postman collections from the `requests` folder into your Postman/Hopscotch/Insomnia client to check how it works.

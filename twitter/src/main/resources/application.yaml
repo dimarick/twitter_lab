@@ -15,7 +15,6 @@ spring:
 
 ums:
   host: ${UMS_APP}
-  port: 9000
   paths:
     user: /users/user
 
