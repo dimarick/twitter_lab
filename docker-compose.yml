@@ -11,15 +11,3 @@ services:
         env_file: .env
         networks:
             - twitter_dev
-    ums:
-        image: twitter_lab/ums:latest
-        ports:
-            -   9000:9000
-        networks:
-            - twitter_dev
-    twitter:
-        image: twitter_lab/twitter:latest
-        ports:
-            -   9001:9001
-        networks:
-            - twitter_dev

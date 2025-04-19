@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+source .env
+
+minikube image load "${DOCKER_HUB_LOGIN}/ums:latest" && \
+minikube image load "${DOCKER_HUB_LOGIN}/twitter:latest" && \
+
+minikube kubectl -- set image deployment/ums ums="${DOCKER_HUB_LOGIN}/ums:latest" && \
+minikube kubectl -- set image deployment/twitter twitter="${DOCKER_HUB_LOGIN}/twitter:latest"
+
+minikube kubectl -- rollout restart -n default deployment twitter
+minikube kubectl -- rollout restart -n default deployment ums
