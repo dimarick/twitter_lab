@@ -2,7 +2,9 @@
 
 source .env
 
-#minikube start
+minikube config set cpus 2 && \
+minikube start --extra-config=kubelet.housekeeping-interval=10s && \
+minikube addons enable metrics-server && \
 
 minikube kubectl -- create deployment ums --image="${DOCKER_HUB_LOGIN}/ums:latest" --port 9000 && \
 minikube kubectl -- create deployment twitter --image="${DOCKER_HUB_LOGIN}/twitter:latest" --port 9001
@@ -11,4 +13,8 @@ minikube kubectl -- expose deployment/ums --type=NodePort --port=9000 && \
 minikube kubectl -- expose deployment/twitter --type=NodePort --port=9001 && \
 
 minikube kubectl -- apply -f kube/services/ums.yaml && \
-minikube kubectl -- apply -f kube/services/twitter.yaml
+minikube kubectl -- apply -f kube/services/twitter.yaml && \
+
+minikube kubectl -- autoscale deployment twitter --min=2 --max=12 --cpu-percent=20 && \
+minikube kubectl -- autoscale deployment ums --min=2 --max=12 --cpu-percent=20 && \
+echo "Kubernetes is ready to work"
